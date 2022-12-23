@@ -65,16 +65,16 @@ fun destructuringDate() {
     // Year: 2022, Month: 12, Day: 31
 }
 
-fun destructuringDateTime() {
-    val (year, month, day, hour, minute, second, nano) = LocalDateTime.of(2022, 12, 23, 10, 20, 54, 1000)
-    println("Year: $year, Month: $month, Day: $day, Hour: $hour, Minute: $minute, Second: $second, Nano: $nano")
-    // Year: 2022, Month: 12, Day: 23, Hour: 10, Minute: 20, Second: 54, Nano: 1000
-}
-
 fun destructuringTime() {
     val (hour: Int, minute: Int, second: Int, nano: Int) = LocalTime.of(12, 30, 15, 999)
     println("Hour: $hour, Minute: $minute, Second: $second, Nano: $nano")
     // Hour: 12, Minute: 30, Second: 15, Nano: 999
+}
+
+fun destructuringDateTime() {
+    val (year, month, day, hour, minute, second, nano) = LocalDateTime.of(2022, 12, 23, 10, 20, 54, 1000)
+    println("Year: $year, Month: $month, Day: $day, Hour: $hour, Minute: $minute, Second: $second, Nano: $nano")
+    // Year: 2022, Month: 12, Day: 23, Hour: 10, Minute: 20, Second: 54, Nano: 1000
 }
 
 fun main() {
@@ -91,6 +91,16 @@ fun main() {
     arithmetics().also { println() }
 
     destructuringDate().also { println() }
-    destructuringDateTime().also { println() }
     destructuringTime().also { println() }
+    destructuringDateTime().also { println() }
 }
+
+/**
+ * TODO:
+ * - custom exceptions
+ * - jUnit5 tests
+ * - optimization of converting Double to time
+ * - comments
+ * - readme - examples
+ * - public github
+ */

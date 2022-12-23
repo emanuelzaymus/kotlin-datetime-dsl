@@ -47,21 +47,21 @@ val Double.time: LocalTime
         return LocalTime.of(hour, minute)
     }
 
-infix fun LocalDateTime.and(duration: Duration): LocalDateTime {
+infix fun LocalDate.and(duration: Duration): LocalDateTime {
+    return atStartOfDay().plus(duration.toJavaDuration())
+}
+
+infix fun LocalTime.and(duration: Duration): LocalTime {
     return plus(duration.toJavaDuration())
 }
 
-infix fun LocalDate.and(duration: Duration): LocalDateTime {
-    return this.atStartOfDay().plus(duration.toJavaDuration())
+infix fun LocalDateTime.and(duration: Duration): LocalDateTime {
+    return plus(duration.toJavaDuration())
 }
 
 infix fun Double.and(duration: Duration): LocalTime {
     val (hour, minute) = parseHourAndMinute(time = this)
     return LocalTime.of(hour, minute).plus(duration.toJavaDuration())
-}
-
-infix fun LocalTime.and(duration: Duration): LocalTime {
-    return plus(duration.toJavaDuration())
 }
 
 private fun parseHourAndMinute(time: Double): Pair<Int, Int> {
