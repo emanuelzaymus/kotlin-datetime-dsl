@@ -85,13 +85,13 @@ private fun parseHourAndMinute(time: Double): Pair<Int, Int> {
 
     val (hourStr, minuteStr) = timeStr.split('.')
 
-    if (hourStr.length > 2 || minuteStr.length > 2) {
-        throw TimeFormatException()
-    }
-
     val hour = hourStr.toInt()
     if (hour < 0) {
         throw NegativeTimeException()
+    }
+
+    if (hourStr.length > 2 || minuteStr.length > 2) {
+        throw TimeFormatException()
     }
 
     val minute = minuteStr.toInt().let { int ->
