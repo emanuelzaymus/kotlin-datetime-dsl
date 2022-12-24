@@ -9,31 +9,25 @@ import kotlin.time.Duration
 import kotlin.time.toJavaDuration
 
 infix fun LocalDate.at(time: Double): LocalDateTime {
-    val (hour, minute) = parseHourAndMinute(time)
-    checkHour24(hour)
-    checkMinute(minute)
+    val (hour24, minute) = parserAndCheckHour24AndMinute(time)
 
-    return LocalDateTime.of(year, month, dayOfMonth, hour, minute)
+    return atTime(hour24, minute)
 }
 
 infix fun LocalDate.at(localTime: LocalTime): LocalDateTime = atTime(localTime)
 
 val Double.am: LocalTime
     get() {
-        val (hour, minute) = parseHourAndMinute(this)
-        checkHour12(hour)
-        checkMinute(minute)
+        val (hour12, minute) = parseAndCheckHour12AndMinute(this)
 
-        return LocalTime.of(if (hour == 12) 0 else hour, minute)
+        return LocalTime.of(if (hour12 == 12) 0 else hour12, minute)
     }
 
 val Double.pm: LocalTime
     get() {
-        val (hour, minute) = parseHourAndMinute(this)
-        checkHour24(hour)
-        checkMinute(minute)
+        val (hour12, minute) = parseAndCheckHour12AndMinute(this)
 
-        return LocalTime.of(if (hour == 12) 12 else hour + 12, minute)
+        return LocalTime.of(if (hour12 == 12) 12 else hour12 + 12, minute)
     }
 
 val midnight: LocalTime get() = LocalTime.MIDNIGHT
@@ -42,11 +36,9 @@ val noon: LocalTime get() = LocalTime.NOON
 
 val Double.time: LocalTime
     get() {
-        val (hour, minute) = parseHourAndMinute(time = this)
-        checkHour24(hour)
-        checkMinute(minute)
+        val (hour24, minute) = parserAndCheckHour24AndMinute(time = this)
 
-        return LocalTime.of(hour, minute)
+        return LocalTime.of(hour24, minute)
     }
 
 infix fun LocalDate.and(duration: Duration): LocalDateTime {
@@ -62,11 +54,25 @@ infix fun LocalDateTime.and(duration: Duration): LocalDateTime {
 }
 
 infix fun Double.and(duration: Duration): LocalTime {
-    val (hour, minute) = parseHourAndMinute(time = this)
+    val (hour24, minute) = parserAndCheckHour24AndMinute(time = this)
+
+    return LocalTime.of(hour24, minute).plus(duration.toJavaDuration())
+}
+
+private fun parserAndCheckHour24AndMinute(time: Double): Pair<Int, Int> {
+    val (hour, minute) = parseHourAndMinute(time)
     checkHour24(hour)
     checkMinute(minute)
 
-    return LocalTime.of(hour, minute).plus(duration.toJavaDuration())
+    return hour to minute
+}
+
+private fun parseAndCheckHour12AndMinute(time: Double): Pair<Int, Int> {
+    val (hour, minute) = parseHourAndMinute(time)
+    checkHour12(hour)
+    checkMinute(minute)
+
+    return hour to minute
 }
 
 // TODO: optimize without strings
