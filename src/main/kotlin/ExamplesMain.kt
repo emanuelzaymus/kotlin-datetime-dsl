@@ -97,7 +97,7 @@ fun main() {
 
 /**
  * TODO:
- * - custom exceptions
+ * - custom exceptions !
  * - jUnit5 tests
  * - optimization of converting Double to time
  * - comments
