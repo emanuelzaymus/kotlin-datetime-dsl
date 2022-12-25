@@ -10,10 +10,8 @@ import java.time.LocalTime
 @Suppress("ClassName")
 @Nested
 internal class `Creation of 24-hour time - Tests` {
-
     @Nested
     inner class `Should succeed` {
-
         @Test
         fun `00_00 - should return midnight`() {
             val time = 00.00.time
@@ -65,7 +63,6 @@ internal class `Creation of 24-hour time - Tests` {
 
     @Nested
     inner class `Should fail` {
-
         @Test
         fun `Hour out of valid range, too large hour - should throw exception`() {
             assertThrows<Time24HoursException> { (24.00).time }
@@ -90,7 +87,5 @@ internal class `Creation of 24-hour time - Tests` {
         fun `Wrong minute format, too large minute - should throw exception`() {
             assertThrows<TimeFormatException> { (15.789).time }
         }
-
     }
-
 }
