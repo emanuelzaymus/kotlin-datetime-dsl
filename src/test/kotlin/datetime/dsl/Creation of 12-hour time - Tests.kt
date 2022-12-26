@@ -69,8 +69,8 @@ internal class `Creation of 12-hour time - Tests` {
     inner class `Should fail` {
         @Test
         fun `Hour out of valid range, too small hour - should throw exception`() {
-            assertThrows<Time12HoursException> { 0.30.am }
-            assertThrows<Time12HoursException> { 0.30.pm }
+            assertThrows<Hour12OutOfRangeException> { 0.30.am }
+            assertThrows<Hour12OutOfRangeException> { 0.30.pm }
         }
 
         @Test
@@ -81,8 +81,8 @@ internal class `Creation of 12-hour time - Tests` {
 
         @Test
         fun `Hour out of valid range, too large hour - should throw exception`() {
-            assertThrows<Time12HoursException> { (13.22).am }
-            assertThrows<Time12HoursException> { (13.22).pm }
+            assertThrows<Hour12OutOfRangeException> { (13.22).am }
+            assertThrows<Hour12OutOfRangeException> { (13.22).pm }
         }
 
         @Test

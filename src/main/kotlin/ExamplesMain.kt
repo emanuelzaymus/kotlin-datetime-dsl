@@ -100,7 +100,6 @@ fun main() {
 
 /**
  * TODO:
- * - jUnit5 tests
  * - optimization of converting Double to time
  * - comments
  * - readme - examples
