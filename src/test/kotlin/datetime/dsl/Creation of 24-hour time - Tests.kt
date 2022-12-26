@@ -55,9 +55,15 @@ internal class `Creation of 24-hour time - Tests` {
         }
 
         @Test
-        fun `23_59 - should return correct result`() {
+        fun `23_59 - should return almost midnight`() {
             val time = 23.59.time
             assertEquals(LocalTime.of(23, 59), time)
+        }
+
+        @Test
+        fun `Rounding that should pass - should return rounded time`() {
+            val time = (15 + 0.01 / 3 + 0.01 / 3 + 0.01 / 3).time
+            assertEquals(LocalTime.of(15, 1), time)
         }
     }
 
@@ -81,6 +87,11 @@ internal class `Creation of 24-hour time - Tests` {
         @Test
         fun `Wrong minute format, too small minute - should throw exception`() {
             assertThrows<TimeFormatException> { (15.001).time }
+        }
+
+        @Test
+        fun `Wrong minute format, rounding error - should throw exception`() {
+            assertThrows<TimeFormatException> { (15.029_999_999_999).time }
         }
 
         @Test

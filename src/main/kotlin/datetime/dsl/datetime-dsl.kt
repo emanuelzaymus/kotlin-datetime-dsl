@@ -80,7 +80,7 @@ private fun parseHourAndMinute(time: Double): Pair<Int, Int> {
     val minute = ((time - hour) * 100).roundToInt() // Round properly double to integer
 
     val shouldBeZero = abs(time - hour - (minute / 100.0))
-    if (shouldBeZero > 0.000_000_001) {
+    if (shouldBeZero > 0.000_000_000_001) {
         throw TimeFormatException(time)
     }
 
