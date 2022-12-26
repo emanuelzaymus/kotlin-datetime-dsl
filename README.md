@@ -72,12 +72,12 @@ Functions throw **custom exceptions** with readable messages when illegal
 arguments passed. Functions are unit-tested as well.
 
 ```kotlin
-0.30.am  // throws datetime.dsl.Hour12OutOfRangeException: Hour of 12-hour time needs to be between 1 and 12 (0)
-6.003.pm // throws datetime.dsl.TimeFormatException: Time needs to be in format HH.mm (6.003)
+0.30.am  // throws datetime.dsl.Hour12OutOfRangeException: Hour of 12-hour time needs to be between 1 and 12 (0).
+6.003.pm // throws datetime.dsl.TimeFormatException: Time needs to be in format HH.mm (6.003).
 
-24.00.time   // throws datetime.dsl.Hour24OutOfRangeException: Hour of 24-hour time needs to be between 0 and 23 (24)
-(-1.00).time // throws datetime.dsl.NegativeTimeException: Time cannot be negative (-1.0)
-15.60.time   // throws datetime.dsl.MinuteOutOfRangeException: Minute needs to be between 0 and 59 (60)
+24.00.time   // throws datetime.dsl.Hour24OutOfRangeException: Hour of 24-hour time needs to be between 0 and 23 (24).
+(-1.00).time // throws datetime.dsl.NegativeTimeException: Time cannot be negative (-1.0).
+15.60.time   // throws datetime.dsl.MinuteOutOfRangeException: Minute needs to be between 0 and 59 (60).
 ```
 
 ### Additional date and time arithmetics
