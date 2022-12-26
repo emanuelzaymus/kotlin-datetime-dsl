@@ -2,6 +2,8 @@
 
 Small **DSL** from creation of **LocalDate**, **LocalTime** and **LocalDateTime** in **Kotlin**.
 
+---
+
 ### Traditional date-time creation
 
 ```kotlin
@@ -21,6 +23,8 @@ LocalTime and LocalDateTime using **extension functions**, **extension propertie
 
 This solution uses build-in extension method on **Int** from Kotlin's **stdlib**
 that creat **kotlin.time.Duration**.
+
+---
 
 ### LocalDate
 
@@ -113,3 +117,9 @@ val (year, month, day, hour, minute, second, nano) = LocalDateTime.of(2022, 12, 
 println("Year: $year, Month: $month, Day: $day, Hour: $hour, Minute: $minute, Second: $second, Nano: $nano")
 // Year: 2022, Month: 12, Day: 23, Hour: 10, Minute: 20, Second: 54, Nano: 1000
 ```
+
+---
+
+### More about date-time in Kotlin
+
+See Kotlin's library: https://github.com/Kotlin/kotlinx-datetime
