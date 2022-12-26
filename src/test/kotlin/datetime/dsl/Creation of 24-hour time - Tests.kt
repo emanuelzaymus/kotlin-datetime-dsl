@@ -71,7 +71,7 @@ internal class `Creation of 24-hour time - Tests` {
     inner class `Should fail` {
         @Test
         fun `Hour out of valid range, too large hour - should throw exception`() {
-            assertThrows<Hour24OutOfRangeException> { (24.00).time }
+            assertThrows<Hour24OutOfRangeException> { 24.00.time }
         }
 
         @Test
@@ -81,22 +81,22 @@ internal class `Creation of 24-hour time - Tests` {
 
         @Test
         fun `Minute out of valid range, too large minute - should throw exception`() {
-            assertThrows<MinuteOutOfRangeException> { (15.60).time }
+            assertThrows<MinuteOutOfRangeException> { 15.60.time }
         }
 
         @Test
         fun `Wrong minute format, too small minute - should throw exception`() {
-            assertThrows<TimeFormatException> { (15.001).time }
+            assertThrows<TimeFormatException> { 15.001.time }
         }
 
         @Test
         fun `Wrong minute format, rounding error - should throw exception`() {
-            assertThrows<TimeFormatException> { (15.029_999_999_999).time }
+            assertThrows<TimeFormatException> { 15.029_999_999_999.time }
         }
 
         @Test
         fun `Wrong minute format, too large minute - should throw exception`() {
-            assertThrows<TimeFormatException> { (15.789).time }
+            assertThrows<TimeFormatException> { 15.789.time }
         }
     }
 }

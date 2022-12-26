@@ -31,7 +31,7 @@ fun dateTimeWithSecond() {
 fun time12() {
     println(12.00.am)                // 00:00
     println(midnight)                // 00:00
-    println(01.15.am)                // 01:15
+    println(1.15.am)                 // 01:15
     println(11.59.am and 1.seconds)  // 11:59:01
     println(12.00.pm)                // 12:00
     println(noon)                    // 12:00
@@ -67,7 +67,7 @@ fun destructuringDate() {
 }
 
 fun destructuringTime() {
-    val (hour: Int, minute: Int, second: Int, nano: Int) = LocalTime.of(12, 30, 15, 999)
+    val (hour, minute, second, nano) = LocalTime.of(12, 30, 15, 999)
 
     println("Hour: $hour, Minute: $minute, Second: $second, Nano: $nano")
     // Hour: 12, Minute: 30, Second: 15, Nano: 999
@@ -97,10 +97,3 @@ fun main() {
     destructuringTime().also { println() }
     destructuringDateTime().also { println() }
 }
-
-/**
- * TODO:
- * - comments
- * - readme - examples
- * - public github
- */

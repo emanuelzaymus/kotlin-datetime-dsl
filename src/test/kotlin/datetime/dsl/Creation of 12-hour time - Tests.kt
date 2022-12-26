@@ -81,20 +81,20 @@ internal class `Creation of 12-hour time - Tests` {
 
         @Test
         fun `Hour out of valid range, too large hour - should throw exception`() {
-            assertThrows<Hour12OutOfRangeException> { (13.22).am }
-            assertThrows<Hour12OutOfRangeException> { (13.22).pm }
+            assertThrows<Hour12OutOfRangeException> { 13.22.am }
+            assertThrows<Hour12OutOfRangeException> { 13.22.pm }
         }
 
         @Test
         fun `Wrong minute format, too small minute - should throw exception`() {
-            assertThrows<TimeFormatException> { (6.003).am }
-            assertThrows<TimeFormatException> { (6.003).pm }
+            assertThrows<TimeFormatException> { 6.003.am }
+            assertThrows<TimeFormatException> { 6.003.pm }
         }
 
         @Test
         fun `Wrong minute format, too large minute - should throw exception`() {
-            assertThrows<TimeFormatException> { (2.852).am }
-            assertThrows<TimeFormatException> { (2.852).pm }
+            assertThrows<TimeFormatException> { 2.852.am }
+            assertThrows<TimeFormatException> { 2.852.pm }
         }
     }
 }
