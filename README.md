@@ -15,8 +15,9 @@ not self-explanatory. Modern IDEs like **IntelliJ IDEA** can help us by
 showing **hints** pre method parameters. But other IDEs, GitHub or GitLab
 won't show us anything.
 
-This projekt presents nice, safe and human-readable way for creating LocalDate,
-LocalTime and LocalDateTime.
+This projekt presents nice, **safe** and **human-readable** way for creating LocalDate,
+LocalTime and LocalDateTime using **extension functions**, **extension properties** and
+**infix functions**.
 
 This solution uses build-in extension method on **Int** from Kotlin's **stdlib**
 that creat **kotlin.time.Duration**.
