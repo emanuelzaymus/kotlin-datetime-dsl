@@ -10,14 +10,17 @@ import kotlin.math.roundToInt
 import kotlin.time.Duration
 import kotlin.time.toJavaDuration
 
+/** Combines [this] LocalDate and [time] Double in format HH.mm and returns [LocalDateTime]. See [LocalDate.atTime]. */
 infix fun LocalDate.at(time: Double): LocalDateTime {
     val (hour24, minute) = parserAndCheckHour24AndMinute(time)
 
     return atTime(hour24, minute)
 }
 
+/** Combines [this] LocalDate and [localTime] LocalTime and returns [LocalDateTime]. See [LocalDate.atTime]. */
 infix fun LocalDate.at(localTime: LocalTime): LocalDateTime = atTime(localTime)
 
+/** Creates 12-hour time [LocalTime] specified by this [Double] in format HH.mm.[am]. See [LocalTime.of]. */
 val Double.am: LocalTime
     get() {
         val (hour12, minute) = parseAndCheckHour12AndMinute(time = this)
@@ -25,6 +28,7 @@ val Double.am: LocalTime
         return LocalTime.of(if (hour12 == 12) 0 else hour12, minute)
     }
 
+/** Creates 12-hour time [LocalTime] specified by this [Double] in format HH.mm.[pm]. See [LocalTime.of]. */
 val Double.pm: LocalTime
     get() {
         val (hour12, minute) = parseAndCheckHour12AndMinute(time = this)
@@ -32,10 +36,16 @@ val Double.pm: LocalTime
         return LocalTime.of(if (hour12 == 12) 12 else hour12 + 12, minute)
     }
 
+/** Returns [LocalTime.MIDNIGHT]. */
 val midnight: LocalTime get() = LocalTime.MIDNIGHT
+
+/** Returns [LocalTime.NOON]. */
 val midday: LocalTime get() = LocalTime.NOON
+
+/** Returns [LocalTime.NOON]. */
 val noon: LocalTime get() = LocalTime.NOON
 
+/** Creates 24-hour time [LocalTime] specified by this [Double] in format HH.mm.[time]. See [LocalTime.of]. */
 val Double.time: LocalTime
     get() {
         val (hour24, minute) = parserAndCheckHour24AndMinute(time = this)
@@ -43,12 +53,16 @@ val Double.time: LocalTime
         return LocalTime.of(hour24, minute)
     }
 
+/** Adds [duration] of type [kotlin.time.Duration] to [this] LocalDate and returns new [LocalDateTime]. See [LocalDate.plus]. */
 infix fun LocalDate.and(duration: Duration): LocalDateTime = atStartOfDay().plus(duration.toJavaDuration())
 
+/** Adds [duration] of type [kotlin.time.Duration] to [this] LocalTime and returns new [LocalTime]. See [LocalTime.plus]. */
 infix fun LocalTime.and(duration: Duration): LocalTime = plus(duration.toJavaDuration())
 
+/** Adds [duration] of type [kotlin.time.Duration] to [this] LocalDateTime and returns new [LocalDateTime]. See [LocalDateTime.plus]. */
 infix fun LocalDateTime.and(duration: Duration): LocalDateTime = plus(duration.toJavaDuration())
 
+/** Adds [duration] of type [kotlin.time.Duration] to [this] Double representing 24-hour time in format HH.mm. Returns new [LocalTime]. See [LocalTime.of]. */
 infix fun Double.and(duration: Duration): LocalTime {
     val (hour24, minute) = parserAndCheckHour24AndMinute(time = this)
 

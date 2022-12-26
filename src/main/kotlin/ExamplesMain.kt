@@ -100,7 +100,6 @@ fun main() {
 
 /**
  * TODO:
- * - optimization of converting Double to time
  * - comments
  * - readme - examples
  * - public github
