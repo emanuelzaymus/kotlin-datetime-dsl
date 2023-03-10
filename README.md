@@ -14,7 +14,7 @@ val dateTime = LocalDateTime.of(2022, 12, 23, 10, 20, 54, 1000)
 
 We need to type a lot of numbers in exact order which is error-prone and
 not self-explanatory. Modern IDEs like **IntelliJ IDEA** can help us by
-showing **hints** pre method parameters. But other IDEs, GitHub or GitLab
+showing **hints** for method parameters. But other IDEs, GitHub or GitLab
 won't show us anything.
 
 This projekt presents nice, **safe** and **human-readable** way for creating LocalDate,
